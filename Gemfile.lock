@@ -3,6 +3,7 @@ GEM
   specs:
     diff-lcs (1.2.5)
     kgio (2.9.3)
+    multi_json (1.11.2)
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
@@ -39,6 +40,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  multi_json (~> 1.11.2)
   rack-test (~> 0.6.3)
   rake (~> 10.4.2)
   redis (~> 3.2.1)
