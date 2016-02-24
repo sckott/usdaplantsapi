@@ -1,0 +1,6 @@
+---
+db:
+  fb:
+    adapter: nulldb
+  slb:
+    adapter: nulldb
