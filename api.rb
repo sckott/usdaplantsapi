@@ -16,7 +16,7 @@ class UsdaAPI < Sinatra::Application
   end
 
   # prohibit certain methods
-  route :put, :delete, :copy, :options, :trace, '/*' do
+  route :put, :post, :delete, :copy, :options, :trace, '/*' do
     halt 405
   end
 
@@ -38,7 +38,7 @@ class UsdaAPI < Sinatra::Application
   get "/heartbeat/?" do
     return MultiJson.dump({
       "routes" => [
-        "/search (GET)",
+        "/search (HEAD, GET)",
         "/heartbeat"
       ]
     })
@@ -56,6 +56,6 @@ class UsdaAPI < Sinatra::Application
     cols = res[0]
     res.delete_at(0)
     res = res.collect { |x| Hash[cols.zip(x.to_a)] }
-    return MultiJson.dump(res)
+    return MultiJson.dump({count: res.length, data: res})
   end
 end
