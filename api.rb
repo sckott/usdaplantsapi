@@ -2,12 +2,19 @@ require 'sinatra'
 require 'sqlite3'
 require "multi_json"
 require "sinatra/multi_route"
+require 'active_record'
 require_relative 'helpers'
+require_relative 'model'
+
+ActiveRecord::Base.logger = Logger.new(File.open('database.log', 'w'))
+
+ActiveRecord::Base.establish_connection(
+  :adapter  => 'sqlite3',
+  :database => 'usdadb.sqlite3'
+)
 
 class UsdaAPI < Sinatra::Application
   before do
-    $db = SQLite3::Database.new 'usdadb.sqlite3'
-
     # set headers
     headers 'Content-Type' => 'application/json; charset=utf8'
     headers 'Access-Control-Allow-Methods' => 'HEAD, GET'
@@ -44,18 +51,19 @@ class UsdaAPI < Sinatra::Application
     })
   end
 
-  # route listing route
   get '/search/?' do
-    get_species
+    get_data_ar
   end
 
-  def get_species
-    limit = params[:limit] || 10
-    fields = params[:fields] || '*'
-    res = $db.execute2("select %s from usda limit %s" % [fields, limit])
-    cols = res[0]
-    res.delete_at(0)
-    res = res.collect { |x| Hash[cols.zip(x.to_a)] }
-    return MultiJson.dump({count: res.length, data: res})
+  # helpers  --------
+  def get_data_ar
+    begin
+      data = Usda.endpoint(params)
+      raise Exception.new('no results found') if data.length.zero?
+      { count: data.limit(nil).count(1), returned: data.length, data: data, error: nil }.to_json
+    rescue Exception => e
+      halt 400, { count: 0, returned: 0, data: nil, error: { message: e.message }}.to_json
+    end
   end
+
 end

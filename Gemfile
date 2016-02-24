@@ -4,6 +4,7 @@ gem 'redis', '~> 3.2.1'
 gem "sqlite3", '~> 1.3.11'
 gem 'multi_json', '~> 1.11', '>= 1.11.2'
 gem 'sinatra-contrib', '~> 1.4', '>= 1.4.6'
+gem 'activerecord', '~> 4.2.3', require: 'active_record'
 
 group :manual do
   gem 'sinatra', '~> 1.4.6'
