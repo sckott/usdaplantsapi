@@ -40,7 +40,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  multi_json (~> 1.11.2)
+  multi_json (~> 1.11, >= 1.11.2)
   rack-test (~> 0.6.3)
   rake (~> 10.4.2)
   redis (~> 3.2.1)
