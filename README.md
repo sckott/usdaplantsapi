@@ -5,7 +5,11 @@ USDA plants database API
 
 ## base url
 
-[https://plantsdb.xyz](https://plantsdb.xyz)
+<https://plantsdb.xyz>
+
+## API status
+
+<http://recology.info/usdaplantsapistatus/>
 
 ## routes
 
