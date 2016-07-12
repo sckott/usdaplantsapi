@@ -4,7 +4,7 @@ noheader:
 	tail -n +2 usdaplants.csv > nohead.csv
 
 makedb:
-	sqlite3 usdadb.sqlite3 < import.sql
+	sqlite3 usdadb_new.sqlite3 < import_new.sql
 
 clean:
 	rm nohead.csv

@@ -10,7 +10,7 @@ ActiveRecord::Base.logger = Logger.new(File.open('database.log', 'w'))
 
 ActiveRecord::Base.establish_connection(
   :adapter  => 'sqlite3',
-  :database => 'usdadb.sqlite3'
+  :database => 'usdadb_new.sqlite3'
 )
 
 class UsdaAPI < Sinatra::Application
