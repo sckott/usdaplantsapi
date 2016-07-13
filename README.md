@@ -7,9 +7,13 @@ USDA plants database API
 
 <https://plantsdb.xyz>
 
+## API docs
+
+<http://recology.info/usdaplantsapidocs>
+
 ## API status
 
-<http://recology.info/usdaplantsapistatus/>
+<http://recology.info/usdaplantsapistatus>
 
 ## routes
 
