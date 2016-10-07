@@ -38,7 +38,7 @@ class UsdaAPI < Sinatra::Application
   end
 
   # default to heartbeat
-  get '/' do
+  get '/?' do
     redirect '/heartbeat'
   end
 
@@ -60,9 +60,13 @@ class UsdaAPI < Sinatra::Application
     begin
       data = Usda.endpoint(params)
       raise Exception.new('no results found') if data.length.zero?
-      { count: data.limit(nil).count(1), returned: data.length, data: data, error: nil }.to_json
+      { count: data.limit(nil).count(1), returned: data.length,
+        citation: $usda_citation, terms: $usda_terms,
+        data: data, error: nil }.to_json
     rescue Exception => e
-      halt 400, { count: 0, returned: 0, data: nil, error: { message: e.message }}.to_json
+      halt 400, { count: 0, returned: 0, data: nil,
+        citation: $usda_citation, terms: $usda_terms,
+        error: { message: e.message } }.to_json
     end
   end
 
