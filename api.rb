@@ -39,7 +39,7 @@ class UsdaAPI < Sinatra::Application
 
   # default to heartbeat
   get '/?' do
-    redirect '/heartbeat'
+    redirect '/heartbeat/'
   end
 
   get "/heartbeat/?" do
