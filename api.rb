@@ -14,6 +14,8 @@ ActiveRecord::Base.establish_connection(
 )
 
 class UsdaAPI < Sinatra::Application
+  set :protection, :except => [:json_csrf]
+
   before do
     # set headers
     headers 'Content-Type' => 'application/json; charset=utf8'
