@@ -1,0 +1,14 @@
+version: '2'
+
+services:
+  sqlite:
+    image: dockerpinata/sqlite
+    restart: always
+  
+  api:
+    build: .
+    ports:
+      - "8888:8888"
+    links:
+      - sqlite
+    restart: always
