@@ -2,6 +2,7 @@ usda plants database API
 ========================
 
 **NOTE: This is not a USDA supported project**
+
 **NOTE: The data behind the API is a bit stale, approx. from July 2016**
 
 <br>
