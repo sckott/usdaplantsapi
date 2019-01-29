@@ -5,6 +5,12 @@ usda plants database API
 
 **NOTE: The data behind the API is a bit stale, approx. from July 2016**
 
+USDA PLANTS Database: <https://plants.sc.egov.usda.gov/java/>
+
+Cite the PLANTS database as:
+
+> USDA, NRCS. 2019. The PLANTS Database (http://plants.usda.gov, \<todays date\>). National Plant Data Team, Greensboro, NC 27401-4901 USA.
+
 <br>
 
 ## base url
